@@ -6,7 +6,7 @@ Launches H2, an included open source in-memory database. This Java application i
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/init-start-h2@v4.21.1
+- uses: liquibase-github-actions/init-start-h2@v4.22.0
   with:
     # Network address to bind to
     # string
@@ -50,7 +50,7 @@ The liquibase init start h2 action accepts all valid liquibase global options as
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/init-start-h2@v4.21.1
+  - uses: liquibase-github-actions/init-start-h2@v4.22.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
