@@ -24,6 +24,9 @@ inputs:
   addEmptyMdcValues: # bool
     description: 'If true, a subset of the MdcKeys, as defined by product, will be set to empty strings upon system startup.'
     required: false
+  allowDuplicatedChangesetIdentifiers: # bool
+    description: 'Allows duplicated changeset identifiers without failing Liquibase execution.'
+    required: false
   alwaysDropInsteadOfReplace: # bool
     description: 'If true, drop and recreate a view instead of replacing it.'
     required: false
@@ -210,6 +213,12 @@ inputs:
   secureParsing: # bool
     description: 'If true, remove functionality from file parsers which could be used insecurely. Examples include (but not limited to) disabling remote XML entity support.'
     required: false
+  shouldGenerateChecksRunReport: # bool
+    description: 'If true, the checks run report will actually be generated. This argument supercedes whatever value you set on the command. However, both this and the command need to be set to true to actually generate the report.'
+    required: false
+  shouldGenerateRollbackReport: # bool
+    description: 'If true, the rollback report will actually be generated. This argument supercedes whatever value you set on the command. However, both this and the command need to be set to true to actually generate the report.'
+    required: false
   shouldRun: # bool
     description: 'Should Liquibase commands execute'
     required: false
@@ -254,6 +263,7 @@ runs:
     - ${{ inputs.username }}
     - ${{ inputs.webPort }}
     - ${{ inputs.addEmptyMdcValues }}
+    - ${{ inputs.allowDuplicatedChangesetIdentifiers }}
     - ${{ inputs.alwaysDropInsteadOfReplace }}
     - ${{ inputs.alwaysOverrideStoredLogicSchema }}
     - ${{ inputs.autoReorg }}
@@ -316,6 +326,8 @@ runs:
     - ${{ inputs.reportsPath }}
     - ${{ inputs.searchPath }}
     - ${{ inputs.secureParsing }}
+    - ${{ inputs.shouldGenerateChecksRunReport }}
+    - ${{ inputs.shouldGenerateRollbackReport }}
     - ${{ inputs.shouldRun }}
     - ${{ inputs.shouldSnapshotData }}
     - ${{ inputs.showBanner }}
