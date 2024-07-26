@@ -17,11 +17,12 @@ message Init {
   message StartH2Request {
     optional string bind_address = 1; // Network address to bind to
     optional int32 db_port = 2; // Port to run h2 database on
-    optional bool launch_browser = 3; // Whether to open a browser to the database's web interface
-    optional string password = 4; // Password to use for created h2 user
-    optional string username = 5; // Username to create in h2
-    optional int32 web_port = 6; // Port to run h2's web interface on
-    liquibase.GlobalOptions global_options = 7;
+    optional bool detached = 3; // When set to true, Liquibase initiates the H2 database in a new thread without blocking, allowing use within the flow command. Regardless of the parameter setting, data stored in the H2 database is cleared when the JVM exits, such as at the end of the flow command.
+    optional bool launch_browser = 4; // Whether to open a browser to the database's web interface
+    optional string password = 5; // Password to use for created h2 user
+    optional string username = 6; // Username to create in h2
+    optional int32 web_port = 7; // Port to run h2's web interface on
+    liquibase.GlobalOptions global_options = 8;
   }
 }
 

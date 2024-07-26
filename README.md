@@ -6,7 +6,7 @@ Launches H2, an included open source in-memory database. This Java application i
 ```yaml
 steps:
 - uses: actions/checkout@v3
-- uses: liquibase-github-actions/init-start-h2@v4.28.0
+- uses: liquibase-github-actions/init-start-h2@v4.29.0
   with:
     # Network address to bind to
     # string
@@ -17,6 +17,11 @@ steps:
     # int32
     # Optional
     dbPort: ""
+
+    # When set to true, Liquibase initiates the H2 database in a new thread without blocking, allowing use within the flow command. Regardless of the parameter setting, data stored in the H2 database is cleared when the JVM exits, such as at the end of the flow command.
+    # bool
+    # Optional
+    detached: ""
 
     # Whether to open a browser to the database"s web interface
     # bool
@@ -50,7 +55,7 @@ The liquibase init start h2 action accepts all valid liquibase global options as
 ```yaml
 steps:
   - uses: actions/checkout@v3
-  - uses: liquibase-github-actions/init-start-h2@v4.28.0
+  - uses: liquibase-github-actions/init-start-h2@v4.29.0
     with:
       headless: true
       licenseKey: ${{ secrets.LIQUIBASE_LICENSE_KEY }}
