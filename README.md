@@ -1,4 +1,27 @@
 # Liquibase Init Start H2 Action
+
+⚠️ **VERSION SUPPORT NOTICE**: This action supports Liquibase versions up to 4.x. For Liquibase 5.0+ features, please migrate to [`liquibase/setup-liquibase`](https://github.com/liquibase/setup-liquibase).
+
+## Migration Guide
+
+### Current Approach (Supports Liquibase 4.x)
+```yaml
+- uses: liquibase-github-actions/init-start-h2@v4.33.0
+  with:
+    # your parameters here
+```
+
+### Recommended for Liquibase 5.0+ Features
+```yaml
+- uses: liquibase/setup-liquibase@v1
+  with:
+    version: '5.0.0'  # Supports latest features
+    edition: 'oss'
+- run: liquibase init-start-h2 # add your parameters as CLI flags
+```
+
+---
+
 Official GitHub Action to run Liquibase Init Start H2 in your GitHub Action Workflow. For more information on how init start h2 works visit the [Official Liquibase Documentation](https://docs.liquibase.com/commands/home.html).
 ## Init Start H2
 Launches H2, an included open source in-memory database. This Java application is shipped with Liquibase, and is useful in the Getting Started experience and for testing out Liquibase commands.
